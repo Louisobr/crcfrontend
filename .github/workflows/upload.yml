@@ -1,0 +1,33 @@
+name: Deploy Frontend to S3
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write 
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4 
+        with:
+          role-to-assume: arn:aws:iam::521754508739:role/github 
+          aws-region: eu-west-2
+
+      - name: Sync files to S3
+        
+        run: |
+          aws s3 sync . s3://cvbucket4949494 \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".gitignore" \
+            --exclude "README.md" \
+            --delete
