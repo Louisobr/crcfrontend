@@ -1,7 +1,8 @@
 describe('Endtoend', () => {
     it('Incrementsdb', () => {
-        const testId = 'test-${Date.now()}'
-        const url = "/items/${testId}"
+        // const testId = 'test-${Date.now()}'
+        // const url = "/items/${testId}"
+        const url = "/items/1000"
         cy.request('POST', url, {}).then((response1) => {
             expect(response1.status).to.eq(200)
             cy.request('POST', url, {}).then((response2) => {
