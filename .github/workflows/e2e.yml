@@ -10,7 +10,7 @@ jobs:
       # and run all Cypress tests
       - name: Get URI from SSM Parameter Store
         run: |
-          URI=$(aws ssm get-parameter --name "apiuri" --query "Parameter.Value" --output text)
+          URI=$(aws ssm get-parameter --name "apiuri" --region "eu-west-2" --query "Parameter.Value" --output text)
           echo "CYPRESS_BASE_URL=$URI" >> $GITHUB_ENV
       - name: Cypress run
         uses: cypress-io/github-action@v7
