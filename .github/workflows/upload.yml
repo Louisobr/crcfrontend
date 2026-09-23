@@ -22,6 +22,15 @@ jobs:
           role-to-assume: arn:aws:iam::521754508739:role/github 
           aws-region: eu-west-2
 
+      - name: Get URI from SSM Parameter Store
+        run: |
+          URI=$(aws ssm get-parameter --name "apiuri" --query "Parameter.Value" --output text)
+          echo "API_URI=$URI" >> $GITHUB_ENV
+
+      - name: Inject API URI into script.js
+        run: |
+          echo "const API_URI = '${{ env.API_URI }}';" > config.js
+
       - name: Sync files to S3
         
         run: |
@@ -32,15 +41,7 @@ jobs:
             --exclude "README.md" \
             --delete
 
-      - name: Get URI from SSM Parameter Store
-        run: |
-          URI=$(aws ssm get-parameter --name "apiuri" --query "Parameter.Value" --output text)
-          echo "API_URI=$URI" >> $GITHUB_ENV
 
-      - name: Inject API URI into script.js
-        run: |
-          echo "const API_URI = '${{ env.API_URI }}';" > config.js
-          
       - name: Read CloudFront ID from SSM Parameter Store
         run: |
           CLOUDFRONT_ID=$(aws ssm get-parameter --name "cloudfrontid" --query "Parameter.Value" --output text)
