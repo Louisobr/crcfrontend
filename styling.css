@@ -1,7 +1,88 @@
-#header {
-    height: 40px;
-    width: 100%;
-    background-color: #3556d9;
-    position: fixed;
-    z-index: 1;
-}
+body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        /* Container to center and limit width */
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.5em;
+            color: #222222;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            color: #555555;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #0056b3; /* Professional blue */
+            border-bottom: 2px solid #0056b3; /* Page-wide line underneath */
+            padding-bottom: 5px;
+            margin-top: 0;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Item Layout (Flexbox for right-aligned dates/locations) */
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #222222;
+        }
+
+        .item-meta {
+            text-align: right;
+            font-style: italic;
+            color: #666666;
+            font-size: 0.95em;
+        }
+
+        .item-subtitle {
+            font-weight: 500;
+            color: #444444;
+            margin-bottom: 5px;
+        }
+
+        /* Lists */
+        ul {
+            margin-top: 5px;
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
