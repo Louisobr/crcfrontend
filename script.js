@@ -5,7 +5,7 @@ async function init() {
 }
 
 async function getAndUpdateCount(id) {
-    const url = `${API_URI}` + id;
+    const url = `${API_URI}/` + id;
     try {
         const response = await fetch (url, {method: "POST"});
 
