@@ -32,6 +32,11 @@ jobs:
             --exclude "README.md" \
             --delete
 
+      - name: Read Gateway ID from SSM Parameter Store
+        run: |
+          CLOUDFRONT_ID=$(aws ssm get-parameter --name "cloudfrontid" --query "Parameter.Value" --output text)
+          echo "CLOUDFRONT_ID=$CLOUDFRONT_ID" >> $GITHUB_ENV
+
       - name: Invalidate CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id E2EGIBDIYIKSZ9 --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ env.CLOUDFRONT_ID }} --paths "/*"
 
