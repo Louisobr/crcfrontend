@@ -5,7 +5,7 @@ async function init() {
 }
 
 async function getAndUpdateCount(id) {
-    const url = "https://vnm9i2c79f.execute-api.eu-west-2.amazonaws.com/items/" + id 
+    const url = `${API_URI}` + id;
     try {
         const response = await fetch (url, {method: "POST"});
 
