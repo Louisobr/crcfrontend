@@ -1,6 +1,6 @@
 async function init() {
     //id hardcoded ig
-    count = await getAndUpdateCount(1000);
+    count = await getAndUpdateCount(100);
     document.getElementById("count").textContent = JSON.stringify(count);
 }
 

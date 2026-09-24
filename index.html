@@ -10,10 +10,15 @@
     <div class="resume-container">
         
         <!-- Header Section -->
-        <header>
+        <header style="position: relative;">
+            <!-- Visitor Counter placed in the left whitespace -->
+            <div style="position: absolute; left: 0; top: 15px; font-size: 0.9em; color: #555555;">
+                Views: <span id="count" style="font-weight: bold; color: #0056b3;"></span>
+            </div>
+
             <h1>Louis O'Brien</h1>
             <div class="contact-info">
-                [louis_obrien20@hotmail.co.uk] | [+44 7582024191]
+                louis_obrien20@hotmail.co.uk | +44 7582024191
             </div>
         </header>
 
@@ -85,9 +90,12 @@
                 <li><strong>CI/CD & DevOps:</strong> [GitHub Actions, Git, CI/CD pipelines]</li>
             </ul>
         </section>
-        <p id="count"></p>
 
     </div>
+
+    <!-- Scripts for Visitor Counter -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 <!-- <!DOCTYPE html>
