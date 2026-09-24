@@ -13,8 +13,10 @@ jobs:
       id-token: write 
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { repository: 'Louisobr/resume', token: '${{ secrets.PAT }}', path: 'private' }
+      - run: pip install jinja2 && cp private/resume.json . && python build.py
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4 

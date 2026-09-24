@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <div class="resume-container">
+        
+        <!-- Header Section -->
+        <header style="position: relative;">
+            <div style="position: absolute; left: 0; top: 15px; font-size: 0.9em; color: #555555;">
+                Views: <span id="count" style="font-weight: bold; color: #0056b3;"></span>
+            </div>
+
+            <h1>{{ name }}</h1>
+            <div class="contact-info">
+                {{ email }} | {{ phone }}
+            </div>
+        </header>
+
+        <!-- Professional Profile Section -->
+        <section>
+            <h2>Professional Profile</h2>
+            <p>{{ profile_summary }}</p>
+        </section>
+
+        <!-- Education Section -->
+        <section>
+            <h2>Education</h2>
+            {% for edu in education %}
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">{{ edu.degree }}</div>
+                    <div class="item-meta">{{ edu.date }} | {{ edu.location }}</div>
+                </div>
+                <div class="item-subtitle">{{ edu.institution }}</div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!-- Certifications Section -->
+        <section>
+            <h2>Certifications</h2>
+            {% for cert in certifications %}
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">{{ cert.name }}</div>
+                    <div class="item-meta">{{ cert.date }}</div>
+                </div>
+                <div class="item-subtitle">{{ cert.issuer }}</div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!-- Experience Section -->
+        <section>
+            <h2>Experience</h2>
+            {% for job in experience %}
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">{{ job.title }}</div>
+                    <div class="item-meta">{{ job.date }} | {{ job.location }}</div>
+                </div>
+                <div class="item-subtitle">{{ job.company }}</div>
+                <ul>
+                    {% for bullet in job.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!-- Key Skills Section -->
+        <section>
+            <h2>Key Skills</h2>
+            <ul>
+                {% for skill in skills %}
+                <li><strong>{{ skill.category }}:</strong> {{ skill.details }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Scripts for Visitor Counter -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
